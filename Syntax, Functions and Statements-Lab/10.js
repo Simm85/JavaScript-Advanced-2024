@@ -1,24 +1,24 @@
 function aggregateElements(array) {
+      sumOfNumbers(array);
+      sumOfInverseValues(array);
+      concatElements(array);
 
       function sumOfNumbers(numbers) {
-            return numbers.reduce((res, num) => res += num);
-      }
-
-      function sumOfInverseValues(numbers) {
-            return numbers.reduce((res, num) => {
-                  num = 1 / num;
-                  return res += num;
-            }, 0);
+            const result = numbers.reduce((res, num) => res += num);
+            return console.log(result);
       }
 
       function concatElements(numbers) {
-            let result = '';
-            numbers.forEach(number => result += String(number));
-            return result;
+            const result = numbers.reduce((res, num) => res += String(num));
+            return console.log(result);
       }
 
-      console.log(sumOfNumbers(array));
-      console.log(sumOfInverseValues(array));
-      console.log(concatElements(array));
+      function sumOfInverseValues(numbers) {
+            const result = numbers.reduce((res, num) => {
+                  num = 1 / num;
+                  return res += num;
+            }, 0);
+            return console.log(result);
+      }
 }
 aggregateElements([1, 2, 3]);
