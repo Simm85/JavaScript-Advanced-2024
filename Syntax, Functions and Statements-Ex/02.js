@@ -1,34 +1,34 @@
 function greatestCommonDivisor(num1, num2) {
       const divisors = [];
-      findDivisors(num1);
-      findDivisors(num2);
-      GCD(reduceDivisors(divisors));
+      const reducedDivisors = [];
 
-      function findDivisors(int) {
+      findDivisors(num1, divisors);
+      findDivisors(num2, divisors);
+      GCD(reduceDivisors(divisors, reducedDivisors));
+
+      function findDivisors(int, array) {
             for (let i = 0; i <= int; i++) {
                   if (int % i === 0) {
-                        divisors.push(i);
+                        array.push(i);
                   }
             }
+            return array;
       }
 
-      function reduceDivisors(array) {
-            const redusedDivisors = [];
-
+      function reduceDivisors(array, reducedArray) {
             for (let i = 0; i < array.length; i++) {
                   for (let j = i + 1; j < array.length; j++) {
                         if (array[i] === array[j]) {
-                              redusedDivisors.push(array[i]);
+                              reducedArray.push(array[i]);
                         }
                   }
             }
-            
-            return redusedDivisors;
+            return reducedArray;
       }
 
       function GCD(array) {
             array.sort((a, b) => a - b);
-            return console.log(array[array.length - 1]);
+            return console.log(array.pop());
       }
 }
 greatestCommonDivisor(15, 5);
