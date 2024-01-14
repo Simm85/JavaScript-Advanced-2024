@@ -1,2 +1,2 @@
 # JavaScript-Advanced-2024
- Home work and exercises during SoftUni's programing course.
+ Homework and exercises during SoftUni's programing course.
