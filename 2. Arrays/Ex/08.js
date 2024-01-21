@@ -8,7 +8,6 @@ function sortAnArrayByTwoCriteria(arr) {
                   }
             }
       }
-
       return arr.forEach(str => console.log(str));
 }
 sortAnArrayByTwoCriteria(['alpha', 'beta', 'gamma']);
