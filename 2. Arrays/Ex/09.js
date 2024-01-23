@@ -13,7 +13,7 @@ function magicMatrices(matrix) {
             return true;
       }
 
-      const areCowsMagical = () => {
+      const areColsMagical = () => {
             for (let i = 0; i < matrix.length; i++) {
                   let currentSum = 0;
                   for (let j = 0; j < matrix[i].length; j++) {
@@ -26,11 +26,25 @@ function magicMatrices(matrix) {
             return true;
       }
       //  console.log(areRowsMagical());
-      //  console.log(areCowsMagical());
-      return areCowsMagical() && areRowsMagical();
+      //  console.log(areColsMagical());
+      return areColsMagical() && areRowsMagical();
 }
 magicMatrices([
       [4, 5, 6],
       [6, 5, 4],
       [5, 5, 5]]);
 magicMatrices([[11, 32, 45], [21, 0, 1], [21, 1, 1]]);
+
+
+ticTacToe([
+      "0 1",
+      "0 0",
+      "0 2",
+      "2 0",
+      "1 0",
+      "1 1",
+      "1 2",
+      "2 2",
+      "2 1",
+      "0 0"
+]);
