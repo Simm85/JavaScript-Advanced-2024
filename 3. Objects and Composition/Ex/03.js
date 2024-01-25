@@ -72,7 +72,6 @@ carFactory({
       wheelsize: 14
 });
 
-
 carFactory({
       model: 'Opel Vectra',
       power: 110,
