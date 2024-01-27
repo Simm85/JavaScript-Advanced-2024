@@ -4,19 +4,15 @@ function townsToJSON(arr) {
       }
       const tableHeadings = strToArr(arr.shift());
       const [Town, Latitude, Longitude] = tableHeadings;
-      const object = {
-            Town,
-            Latitude,
-            Longitude,
-      };
+      const object = { Town, Latitude, Longitude };
 
       const result = [];
 
       for (const el of arr) {
+            const newObject = Object.assign({}, object);
             let [Town, Latitude, Longitude] = strToArr(el);
             Latitude = Number(Latitude).toFixed(2);
             Longitude = Number(Longitude).toFixed(2);
-            const newObject = Object.assign({}, object);
             newObject.Town = Town;
             newObject.Latitude = Number(Latitude);
             newObject.Longitude = Number(Longitude);
