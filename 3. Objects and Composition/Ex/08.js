@@ -7,8 +7,7 @@ function rectangle(width, height, color) {
                   return this.width * this.height;
             },
             charToUpperCase() {
-                  const charToUpperCase = this.color.charAt(0).toUpperCase();
-                  return this.color = this.color.replace(this.color.charAt(0), charToUpperCase);
+                  return this.color = this.color.replace(this.color[0], this.color[0].toUpperCase());
             }
       }
       rect.charToUpperCase();
