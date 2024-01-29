@@ -6,7 +6,7 @@ function search() {
       if (inputString.length > 0) {
          result.textContent = '';
          inputString = inputString.toLowerCase();
-         arr.filter(el => el.textContent.toLowerCase().includes(inputString));
+         
          arr.forEach(el => {
             el.style.fontWeight = '';
             el.style.textDecoration = '';
