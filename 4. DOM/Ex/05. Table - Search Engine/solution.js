@@ -12,21 +12,21 @@ function solve() {
       }
 
       unselectRows(tableData);
+   }
 
-      function selectRows(array, input) {
-         array.forEach(el => {
-            if (el.textContent.toLowerCase().includes(input)) {
-               el.parentNode.classList.add('select');
-            }
-         });
-      }
+   function selectRows(array, input) {
+      array.forEach(el => {
+         if (el.textContent.toLowerCase().includes(input)) {
+            el.parentNode.classList.add('select');
+         }
+      });
+   }
 
-      function unselectRows(array) {
-         array.forEach(el => {
-            if (el.parentNode.classList.contains('select')) {
-               el.parentNode.classList.remove('select');
-            }
-         });
-      }
+   function unselectRows(array) {
+      array.forEach(el => {
+         if (el.parentNode.classList.contains('select')) {
+            el.parentNode.classList.remove('select');
+         }
+      });
    }
 }
