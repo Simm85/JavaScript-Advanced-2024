@@ -1,17 +1,12 @@
 function solve() {
   const input = document.getElementById('input');
-
-  if (input.value.length == 0) {
-    return;
-  }
-
   const outputText = document.getElementById('output');
   const inputText = input.value.split('.').slice(0, -1);
   const isRemainder = inputText.length % 3 == 1;
   const arr = [];
 
   for (const sentence of inputText) {
- 
+
     if (inputText.length == 1) {
       outputText.innerHTML = `<p>${sentence}.</p>`;
       return;
@@ -23,7 +18,7 @@ function solve() {
       textProcessing(arr);
     } else if (arr.length == 3 && !isRemainder) {
       textProcessing(arr);
-    } else if (isRemainder && inputText.length > 2) {
+    } else if (isRemainder) {
       const currentIndex = inputText.indexOf(sentence);
       const lastIndex = inputText.length - 1;
 
