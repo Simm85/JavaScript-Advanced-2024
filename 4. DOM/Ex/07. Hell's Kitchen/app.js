@@ -2,8 +2,8 @@ function solve() {
    document.querySelector('#btnSend').addEventListener('click', onClick);
    const restData = {
       bestRest: {
-         name: null,
-         workers: null,
+         name: '',
+         workers: {},
          avgSalary: 0,
          bestSalary: 0,
       },
@@ -26,19 +26,21 @@ function solve() {
          let currentAvgSalary = sum / salaryCounter;
 
          if (this.bestRest.avgSalary < currentAvgSalary) {
+            for (const key in this.bestRest.workers) {
+               delete this.bestRest.workers[key];
+            }
+
             this.bestRest.name = string;
             this.bestRest.avgSalary = currentAvgSalary;
             this.bestRest.bestSalary = currentBestSalary;
-            const addBestWorkers = () => {
-               const obj = {};
-               for (let i = 0; i < array.length; i++) {
-                  if (i % 2 == 0 && !obj.hasOwnProperty(array[i])) {
-                     obj[array[i]] = Number(array[i + 1]);
-                  }
+
+            for (let i = 0; i < array.length; i++) {
+               if (i % 2 == 0) {
+                  this.bestRest.workers[array[i]] = Number(array[i + 1]);
                }
-               return obj;
             }
-            const sortedWorkers = Object.entries(addBestWorkers()).sort((a, b) => b[1] - a[1]);
+
+            const sortedWorkers = Object.entries(this.bestRest.workers).sort((a, b) => b[1] - a[1]);
             this.bestRest.workers = Object.fromEntries(sortedWorkers);
          }
       }
@@ -49,16 +51,18 @@ function solve() {
       const outputs = document.getElementById('outputs').querySelectorAll('p');
       const [restsOutput, workersOutput] = outputs;
 
-      for (const data of input) {
-         const [restName, workersData] = data.split(' - ');
+      for (let data of input) {
+         data = data.match(/[^-,\s]+/g);
+
+         let restName = data.shift();
+         const workersData = data;
 
          if (!restData.hasOwnProperty(restName)) {
             restData[restName] = [];
          }
 
-         for (const data of workersData.split(', ')) {
-            const [workerName, salary] = data.split(' ');
-            restData[restName].push(workerName, salary);
+         for (const data of workersData) {
+            restData[restName].push(data);
          }
 
          restData.defineBestRest(restData[restName], restName);
