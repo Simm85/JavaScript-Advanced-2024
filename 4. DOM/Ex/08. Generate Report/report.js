@@ -20,7 +20,7 @@ function generateReport() {
             const [name, index] = box;
             object[name] = row.children[index].textContent;
         }
-        output.push(object)
+        output.push(object);
     }
 
     document.getElementById('output').textContent = JSON.stringify(output, null, 2);
