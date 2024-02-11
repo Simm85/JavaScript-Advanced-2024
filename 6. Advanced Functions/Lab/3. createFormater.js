@@ -1,7 +1,5 @@
 function createFormatter(delimeter, symbol, bool, func) {
-      return function (n) {
-            return func(delimeter, symbol, bool, n);
-      }
+      return (n) => func(delimeter, symbol, bool, n);
 }
 
 const dollarFormatter = createFormatter(',', '$', true, currencyFormatter);
