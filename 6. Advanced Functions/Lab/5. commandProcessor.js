@@ -2,10 +2,10 @@ function commandProcessor() {
       return {
             string: null,
             append(inputString) {
-                  if (this.string) {
-                        return this.string += inputString;
+                  if (!this.string) {
+                        return this.string = inputString;
                   }
-                  return this.string = inputString;
+                  return this.string += inputString;
             },
             removeStart(n) {
                   return this.string = this.string.substr(n, this.string.length);
