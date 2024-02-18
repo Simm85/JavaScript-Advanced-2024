@@ -32,17 +32,17 @@ class BookClub {
       }
 
       assignBookToMember(memberName, bookTitle) {
-            if (this.members.indexOf(memberName) === -1) {
+            if (this.members.indexOf(memberName) == -1) {
                   throw new Error(`Member ${memberName} not found.`);
             }
 
-            const book = this.books.find(book => Object.keys(book)[0] === bookTitle);
+            const book = this.books.find(book => Object.keys(book)[0] == bookTitle);
             if (!book) {
                   throw new Error(`Book "${bookTitle}" not found.`);
             }
 
             const bookIndex = this.books.find((book, i) => {
-                  if (Object.keys(book)[0] === bookTitle) {
+                  if (Object.keys(book)[0] == bookTitle) {
                         return i;
                   }
             });
