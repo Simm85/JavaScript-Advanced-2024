@@ -6,10 +6,10 @@ function argumentInfo(...args) {
             let currentType = typeof arg;
             types.push(`${currentType}: ${arg}`);
 
-            if (!typesCounter.hasOwnProperty(currentType)) {
-                  typesCounter[currentType] = 1;
-            } else {
+            if (typesCounter[currentType]) {
                   typesCounter[currentType]++;
+            } else {
+                  typesCounter[currentType] = 1;
             }
       });
 
@@ -19,5 +19,5 @@ function argumentInfo(...args) {
 
       types.forEach(el => console.log(el));
 }
+
 argumentInfo('cat', 42, function () { console.log('Hello world!'); });
-//argumentInfo('cat', 42, function () { console.log('Hello world!'); });
