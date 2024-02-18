@@ -6,10 +6,10 @@ function solve() {
   const addBtn = document.querySelector('.add-btn');
   addBtn.addEventListener('click', (event) => addInfo(event, inputFields));
 
-  function addInfo(event, inputs) {
+  function addInfo(event, inputs) { 
     event.preventDefault();
 
-    if (inputs.some(input => input.value.length == 0 || input.value == ' ')) {
+    if (inputs.some(input => input.value.length == 0)) {
       return;
     }
 

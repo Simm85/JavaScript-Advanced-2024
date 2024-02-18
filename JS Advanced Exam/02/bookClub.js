@@ -8,7 +8,8 @@ class BookClub {
       addBook(title, author) {
             if (this.books.length > 0) {
                   for (const book of this.books) {
-                        const [currentTitle, currentAuthor] = Object.entries(book);
+                        const currentTitle = Object.keys(book)[0];
+                        const currentAuthor = Object.values(book)[0];
                         if (title == currentTitle && author == currentAuthor) {
                               return `The book "${title}" by ${author} is already in ${this.library} library.`;
                         }
@@ -31,7 +32,6 @@ class BookClub {
       }
 
       assignBookToMember(memberName, bookTitle) {
-
             if (this.members.indexOf(memberName) === -1) {
                   throw new Error(`Member ${memberName} not found.`);
             }
@@ -41,17 +41,17 @@ class BookClub {
                   throw new Error(`Book "${bookTitle}" not found.`);
             }
 
-            const filtered = this.books.filter(obj => obj[bookTitle]);
-            let assignedBook, author;
-            for (const obj of filtered) {
-                  for (const key in obj) {
-                        assignedBook = key;
-                        author = obj[key];
+            const bookIndex = this.books.find((book, i) => {
+                  if (Object.keys(book)[0] === bookTitle) {
+                        return i;
                   }
-            }
+            });
 
+            const filteredBook = this.books.filter(obj => obj[bookTitle]);
+            const assignedBook = Object.keys(...filteredBook)[0];
+            const author = Object.values(...filteredBook)[0];
+            this.books.splice(bookIndex, 1);
             return `Member ${memberName} has been assigned the book "${assignedBook}" by ${author}.`;
-
       }
 
       generateReadingReport() {
