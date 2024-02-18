@@ -13,8 +13,6 @@ class BookClub {
                         if (title == currentTitle && author == currentAuthor) {
                               return `The book "${title}" by ${author} is already in ${this.library} library.`;
                         }
-                        this.books.push({ [title]: author });
-                        return `The book "${title}" by ${author} has been added to ${this.library} library.`;
                   }
             }
 
