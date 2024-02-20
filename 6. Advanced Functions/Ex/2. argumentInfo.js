@@ -2,16 +2,17 @@ function argumentInfo(...args) {
       const types = [];
       const typesCounter = {};
 
-      args.forEach(arg => {
-            let currentType = typeof arg;
+      for (const arg of args) {
+            const currentType = typeof arg;
             types.push(`${currentType}: ${arg}`);
 
             if (typesCounter[currentType]) {
                   typesCounter[currentType]++;
-            } else {
-                  typesCounter[currentType] = 1;
+                  continue;
             }
-      });
+            
+            typesCounter[currentType] = 1;
+      }
 
       Object.entries(typesCounter)
             .sort((a, b) => b[1] - a[1])
