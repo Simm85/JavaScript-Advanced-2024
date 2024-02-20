@@ -69,8 +69,10 @@ function breakfastRobot() {
       return function (str) {
             const [command, type, quantity] = str.split(" ");
             cooker.command = command;
-            cooker.type = type;
-            cooker.quantity = Number(quantity);
+            if (type && quantity) {
+                  cooker.type = type;
+                  cooker.quantity = Number(quantity);
+            }
 
             if (command == "restock") {
                   return cooker.restock();
