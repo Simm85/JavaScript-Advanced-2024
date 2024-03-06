@@ -1,8 +1,9 @@
 function solution(arg) {
-      this.totalScore = null;
       this.rating = null;
       this.obfuscatedDownvotes = null;
       this.obfuscatedUpvotes = null;
+      this.totalVotes = null;
+      this.totalScore = null;
 
       const upvote = () => {
             this.upvotes++;
@@ -24,15 +25,18 @@ function solution(arg) {
 
       const defineRating = () => {
             this.totalScore = this.upvotes - this.downvotes;
-            if (this.totalScore > 66) {
+            this.totalVotes = this.upvotes + this.downvotes;
+            const percentage = (this.upvotes / this.totalVotes) * 100;
+
+            if (percentage > 66) {
                   this.rating = 'hot';
-            } else if (this.totalScore == 0 && this.upvotes + this.downvotes > 100) {
+            } else if (this.totalScore == 0 && this.totalVotes > 100) {
                   this.rating = 'controversial';
             } else if (this.totalScore < 0) {
                   this.rating = 'unpopular';
             }
 
-            if (this.upvotes + this.downvotes < 10 || !this.rating) {
+            if (this.totalVotes < 10 || !this.rating) {
                   this.rating = 'new';
             }
       }
