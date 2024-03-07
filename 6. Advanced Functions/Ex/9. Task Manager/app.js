@@ -9,7 +9,7 @@ function solve() {
     function addTask(e) {
         e.preventDefault();
 
-        if (inputs.some(input => input.value.trim().length == 0)) {
+        if (inputs.some(input => !input.value)) {
             return;
         }
 
@@ -39,11 +39,12 @@ function solve() {
         article.appendChild(div);
         openSec.children[1].appendChild(article);
         btn.addEventListener('click', moveRemoveArticle);
-        btn2.addEventListener('click', () => article.remove());
+        btn2.addEventListener('click', () => removeArticle(article));
     }
 
     function moveRemoveArticle() {
-        const newArticle = document.querySelector('article').cloneNode(true);
+        const newArticle = this.parentNode.parentNode.cloneNode(true);
+
         if (this.textContent == 'Start') {
             const [btn, btn2] = Array.from(newArticle.querySelectorAll('button'));
             btn.className = 'red';
@@ -51,11 +52,15 @@ function solve() {
             btn2.className = 'orange';
             btn2.textContent = 'Finish';
             inProgressSec.children[1].appendChild(newArticle);
-            btn.addEventListener('click', () => newArticle.remove());
+            btn.addEventListener('click', () => removeArticle(newArticle));
             btn2.addEventListener('click', moveRemoveArticle);
         } else {
             newArticle.querySelector('.flex').remove();
             completeSec.children[1].appendChild(newArticle);
         }
+    }
+
+    function removeArticle(article) {
+        article.remove();
     }
 }
