@@ -75,7 +75,6 @@ function solve() {
     }
 
     function clearArchive() {
-        Array.from(document.getElementById('archive').querySelectorAll('li'))
-            .forEach(li => li.remove());
+        Array.from(document.querySelectorAll('#archive li')).forEach(li => li.remove());
     }
 }
